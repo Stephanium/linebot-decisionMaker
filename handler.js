@@ -9,7 +9,10 @@ const 取消選項 = require('./actions/取消選項');
 const 給選項 = require('./actions/給選項');
 
 // 沒開始決定的狀態下，輸入「幫我決定」可以啟用機器人
-const 未決定handler = new LineHandler().onText('幫我決定', 決定).build();
+const 未決定handler = new LineHandler()
+  .onText('幫我決定', 決定)
+  .onText('@hello', 呼叫)
+  .build();
 
 // 已開始決定的狀態下，有四種指令可以用
 const 決定中handler = new LineHandler()
