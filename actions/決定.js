@@ -8,5 +8,5 @@ module.exports = async context => {
     選項: [],
   });
 
-  await context.replyText(`好啊！/n 大家幫忙給 ${displayName} 一些選項吧！`);
+  await context.replyText(`好啊！\n 大家幫忙給 ${displayName} 一些選項吧！`);
 };
