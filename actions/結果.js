@@ -8,11 +8,10 @@ module.exports = async context => {
     }, {});
 
   const orderNames = Object.keys(sortedOrders);
-
+  const r = Math.floor(Math.random() * orderNames.length);
+  const n = orderNames[r];
   // 稍微排版一下，一行一種物品
-  const result = orderNames
-    .map(o => `我決定選 ${o} ，是 ${sortedOrders[o].join(', ')} 說的`)
-    .join('\n');
+  const result = context.replyText(`我決定選 ${n} `);
 
   // 避免沒有選項傳送空字串出現錯誤
   await context.replyText(result || '沒有選項QQ');
