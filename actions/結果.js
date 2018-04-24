@@ -1,11 +1,11 @@
 module.exports = async context => {
-  const sortedOrders = context.state.訂單
+  const sortedOrders = context.state.選項
     // 按照文字排序
     .sort((a, b) => a.order.localeCompare(b.order))
     .reduce((prev, o) => {
       const { name, order } = o;
 
-      // 檢查有沒有人點過一樣的東西
+      // 檢查有沒有人給過一樣的東西
       const match = Object.keys(prev).find(k => order === k);
       if (match) {
         // 有人的話就把名字接在 array 後面
@@ -24,12 +24,12 @@ module.exports = async context => {
   const result = orderNames
     .map(
       o =>
-        `${o} 有 ${sortedOrders[o].length} 份，是 ${sortedOrders[o].join(
+        `${o} 有 ${sortedOrders[o].length} 個，是 ${sortedOrders[o].join(
           ', '
-        )} 點的`
+        )} 說的`
     )
     .join('\n');
 
-  // 避免沒有訂單傳送空字串出現錯誤
-  await context.replyText(result || '沒有訂單QQ');
+  // 避免沒有選項傳送空字串出現錯誤
+  await context.replyText(result || '沒有選項QQ');
 };

@@ -11,13 +11,15 @@ const bot = new LineBot({
 
 // 初始的 state
 bot.setInitialState({
-  開團中: false,
-  開團人: '',
-  訂單: [],
+  決定中: false,
+  主持人: '',
+  選項: [],
 });
 
 bot.onEvent(handler);
 
 const server = createServer(bot);
 
-server.listen(process.env.PORT);
+server.listen(5000, () => {
+  console.log('server is running on 5000 port...');
+});

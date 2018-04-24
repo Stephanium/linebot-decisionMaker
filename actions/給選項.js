@@ -2,25 +2,25 @@
 module.exports = async (context, match) => {
   const { userId, displayName } = context.session.user;
 
-  // 檢查訂單裡面有沒有這個人點過的東西
-  if (context.state.訂單.some(obj => obj.userId === userId)) {
+  // 檢查選項裡面有沒有這個人點過的東西
+  if (context.state.選項.some(obj => obj.userId === userId)) {
     await context.replyText(
-      `${displayName} 你已經點過了，可以輸入「取消」再點一次`
+      `${displayName} 一個人做多只能給一個選項啦！還是你要取消之前那筆，可以輸入「取消」再給一次`
     );
   } else {
     // 去掉前後空白
     const order = match[1].trim();
 
-    // 把訂單塞進 state 中
+    // 把選項塞進 state 中
     context.setState({
       ...context.state,
-      訂單: context.state.訂單.concat({
+      選項: context.state.選項.concat({
         name: displayName,
         userId,
         order,
       }),
     });
 
-    await context.sendText(`我知道 ${displayName} 你點的是 ${order}`);
+    await context.sendText(`收到！ ${displayName} 你說的是 ${order}`);
   }
 };
