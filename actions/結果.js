@@ -11,7 +11,7 @@ module.exports = async context => {
   const r = Math.floor(Math.random() * orderNames.length);
   const n = orderNames[r];
   // 稍微排版一下，一行一種物品
-  if (sortedOrders === null) {
+  if (sortedOrders !== null) {
     await context.replyText(`我決定選 ${n} `);
   } else {
     // 避免沒有選項傳送空字串出現錯誤
