@@ -1,22 +1,28 @@
-# bottender-order-example
+# linebot-decisionMaker
 
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/tw0517tw/bottender-order-example&env=ACCESS_TOKEN&env=CHANNEL_SECRET)
 
-以 [Bottender](https://github.com/Yoctol/bottender) 實作的團購揪團 LINE Bot 範例，[輕鬆揪團不求人！在 LINE 上打造屬於你的 Chatbot 揪團小幫手](https://blog.yoctol.com/bottender-line-order-example-4a3d33dc19f8)的範例程式碼。
 
 ## 支援的指令
 
-### 開團
+### 呼叫
 
-開始一個團體訂單
+當bot被呼叫時給的回應
 
 ```
-開團
+@<bot名稱>
+```
+
+### 決定
+
+開始一個選擇動作
+
+```
+幫我決定
 ```
 
 ### 截止
 
-結束一個團體訂單
+結束一個選擇動作
 
 ```
 截止
@@ -24,31 +30,38 @@
 
 ### 統計
 
-輸出目前訂單內容
+輸出目前選項內容
 
 ```
 統計
 ```
 
-### 下訂單
+### 結果
 
-點自己想要的內容，一人限點一次
+依照目前選項內容隨機挑選其中一項
 
 ```
-我要<訂單內容>
-我也要<訂單內容>
+結果
+```
+
+### 給選項
+
+點自己想要的內容，一人限提供一次
+
+```
+選項<選項內容>
 ```
 
 範例：
 
 ```
-我要紅茶拿鐵
-我也要鮮奶茶
+選項紅茶拿鐵
+選項 鮮奶茶
 ```
 
-### 取消訂單
+### 取消選項
 
-取消自己的訂單
+取消「自己」的選項
 
 ```
 取消
@@ -71,23 +84,6 @@ bottender-order-example/
   .env
 ```
 
-檔案大致的職責分配：
-
-* `index.js` - 程式進入點、Bot 初始化相關、Server 相關的程式碼。
-* `handler.js` - 用 Builder 建立的主邏輯。
-* `actions/*.js` - 在 `handler.js` 裡面引入的各單一動作。
-* `bottender.config.js` - 所有 Bottender 相關的設定放置位置。
-* `.env` - 放置環境變數，包括 `ACCESS_TOKEN` 以及 `CHANNEL_SECRET`。
-
-## Setup
-
-```
-yarn
-cp .env.sample .env
-```
-
-然後必須在 `.env` 中編輯 `ACCESS_TOKEN` 以及 `CHANNEL_SECRET`。或是不使用 `.env` 而在執行 server 的時候直接設定環境變數。
-
 ## NPM Scripts
 
 有兩個預先寫好的指令：
@@ -99,7 +95,3 @@ cp .env.sample .env
 ### `npm start`
 
 執行 Bot。
-
-## License
-
-MIT © [吳東曄 Wu, Dung-Ie](https://github.com/tw0517tw/bottender-order-example)
