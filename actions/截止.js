@@ -1,6 +1,7 @@
 module.exports = async context => {
   const { userId, displayName } = context.session.user;
-  const id = Math.ceil(Math.random() * context.state.選項.length);
+  const total = context.state.選項.length;
+  const id = Math.ceil(Math.random() * total - 1);
   const result = context.state.選項[id];
 
   // 判斷說出截止指令的人是不是決定的人
