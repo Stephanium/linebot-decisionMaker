@@ -1,11 +1,15 @@
 module.exports = async context => {
   const { userId, displayName } = context.session.user;
-  const id = Math.ceil(Math.random() * 35);
+  const id = Math.ceil(Math.random() * context.state.選項.length);
   const result = context.state.選項[id];
 
   // 判斷說出截止指令的人是不是決定的人
   if (context.state.主持人.userId === userId) {
-    await context.replyText(`我決定選 ${result} `);
+    context.replyText(
+      `context.state.選項.length 為 ${
+        context.state.選項.length
+      } \n我決定選 ${result} `
+    );
     // 把 state 重設
     context.resetState();
     await context.replyText('截止囉!');
