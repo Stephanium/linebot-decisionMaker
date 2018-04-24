@@ -11,7 +11,7 @@ module.exports = async context => {
     await context.replyText(`${displayName} 幫你取消囉!`);
   } else {
     await context.replyText(
-      `${displayName} 你沒給過無法取消，輸入「選項ooo」來給選項`
+      `${displayName} 你沒給過無法取消\n輸入「選項ooo」來給選項`
     );
   }
 };

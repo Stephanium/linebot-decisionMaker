@@ -5,7 +5,7 @@ module.exports = async (context, match) => {
   // 檢查選項裡面有沒有這個人點過的東西
   if (context.state.選項.some(obj => obj.userId === userId)) {
     await context.replyText(
-      `${displayName} 一個人做多只能給一個選項啦！還是你要取消之前那筆，可以輸入「取消」再給一次`
+      `${displayName} 一個人做多只能給一個選項啦！\n還是你要取消之前那筆\n可以輸入「取消」再給一次`
     );
   } else {
     // 去掉前後空白
@@ -21,6 +21,6 @@ module.exports = async (context, match) => {
       }),
     });
 
-    await context.sendText(`收到！ ${displayName} 你說的是 ${order}`);
+    await context.sendText(`收到！\n ${displayName} 你說的是 ${order}`);
   }
 };
