@@ -1,6 +1,8 @@
 # linebot-decisionMaker
 
+## 簡介
 
+協助擁有選擇障礙你我他。讓linebot-decisionMaker幫你解決吧！
 
 ## 支援的指令
 
