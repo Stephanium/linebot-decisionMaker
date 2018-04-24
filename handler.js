@@ -3,6 +3,7 @@ const { LineHandler } = require('bottender');
 const 決定 = require('./actions/決定');
 const 截止 = require('./actions/截止');
 const 統計 = require('./actions/統計');
+const 結果 = require('./actions/結果');
 const 取消選項 = require('./actions/取消選項');
 const 給選項 = require('./actions/給選項');
 
@@ -13,6 +14,7 @@ const 未決定handler = new LineHandler().onText('幫我決定', 決定).build(
 const 決定中handler = new LineHandler()
   .onText('截止', 截止)
   .onText('統計', 統計)
+  .onText('結果', 結果)
   .onText('取消', 取消選項)
   .onText(/^選項(.*)/, 給選項)
   .build();
